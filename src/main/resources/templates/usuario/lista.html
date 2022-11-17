@@ -40,11 +40,6 @@
             <td th:text="${noticia.codigo}">1</td>
             <td th:text="${noticia.titular}">Nombre</td>
             <td th:text="${noticia.descripcion}">Descripcion</td>
-            <td>
-              <a class="btn btn-primary" th:href="@{/noticias/edit/}+${noticia.codigo}" href="#" role="button"><i
-                  class="bi bi-pencil-square"></i></a>
-              <a class="btn btn-primary" th:href="@{/noticias/delete/}+${noticia.codigo}" href="#" role="button"><i class="bi bi-trash3-fill"></i></a>
-            </td>
           </tr>
         </tbody>
       </table>

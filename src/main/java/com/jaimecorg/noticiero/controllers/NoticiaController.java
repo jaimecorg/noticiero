@@ -123,4 +123,13 @@ public class NoticiaController {
         model.addAttribute("sessionid", session.getId());
         return "index";
     }
+
+    @GetMapping(value="/lista")
+    public ModelAndView lista() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("noticias", getNoticias());
+        modelAndView.setViewName("usuario/lista");
+
+        return modelAndView;
+    }
 }

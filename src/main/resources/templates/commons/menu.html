@@ -29,11 +29,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/}" href="index.html">Home</a>
+                        <a th:text="#{menu.noticias}" class="nav-link active" aria-current="page" th:href="@{/}" href="index.html">Noticias</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="productos.html">Noticias</a>
-                    </li>
+                  
                 </ul>
 
                 <ul class="navbar-nav">
@@ -43,13 +41,13 @@
                             &#127760;
                         </a>
                         <div class="dropdown-menu">
-                            <a th:href="@{/noticias/welcome?lang_config=es}" th:text="#{menu.idioma.espanol}" class="dropdown-item" href="#">Español</a>
-                            <a th:href="@{/noticias/welcome?lang_config=en}" th:text="#{menu.idioma.ingles}" class="dropdown-item" href="#">Inglés</a>
+                            <a th:href="@{/noticias/list?lang_config=es}" th:text="#{menu.idioma.espanol}" class="dropdown-item" href="#">Español</a>
+                            <a th:href="@{/noticias/list?lang_config=en}" th:text="#{menu.idioma.ingles}" class="dropdown-item" href="#">Inglés</a>
                         </div>
                     </li>
                 </ul>
 
-                <form action="" method="post">
+                <form action="lista.html" th:action="@{/noticias/lista}" method="post">
                     <div class="mb-3">
                         <label th:text="#{menu.email}" for="exampleInputEmail1" class="form-label">Email</label>
                         <input type="email" id="name" class="form-control" placeholder="Email address" required
