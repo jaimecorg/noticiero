@@ -15,52 +15,56 @@
     <title>Noticiero</title>
 </head>
 
-<body>
-    <h1>Funciona!</h1>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Menu</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/}" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="productos.html">Noticias</a>
-                    </li>
-                </ul>
+<body onload=window.location="noticias/list">
+    <div th:replace="commons/menu :: menu" />
 
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            &#127760;
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Español</a>
-                            <a class="dropdown-item" href="#">Inglés</a>
-                        </div>
-                    </li>
-                </ul>
-
-                <form action="" method="post">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="email" id="name" class="form-control" placeholder="Email address" required
-                            autofocus name="name">
-                        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <button type="submit" class="btn btn-info">Signin</button>
-                </form>
-            </div>
+    <div class="row">
+        <div class="col-lg-3">
+          <a th:text="#{noticia.boton.nuevo}" th:href="@{/noticias/create}" class="btn btn-primary btn-sm mb-3">Nueva noticia</a>
         </div>
-    </nav>
+      </div>
+
+    <div>
+        <h2 th:text="#{noticias.titulo}">Noticias</h2>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th th:text="#{noticia.codigo}" scope="col">Código</th>
+              <th th:text="#{noticia.titular}" scope="col">Titular</th>
+              <th th:text="#{noticia.descripcion}" scope="col">Descripción</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="noticia : ${noticias}">
+              <td th:text="${noticia.codigo}">1</td>
+              <td th:text="${noticia.titular}">Nombre</td>
+              <td th:text="${noticia.descripcion}">Descripcion</td>
+              <td>
+                <a class="btn btn-primary" th:href="@{/noticias/edit/}+${noticia.codigo}" href="#" role="button"><i
+                    class="bi bi-pencil-square"></i></a>
+                <a class="btn btn-primary" th:href="@{/noticias/delete/}+${noticia.codigo}" href="#" role="button"><i class="bi bi-trash3-fill"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div class="row">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+
+    <div th:replace="commons/footer :: footer" class="container">Footer</div>
+
 </body>
 
 </html>
